@@ -5,6 +5,33 @@ block styles
 block content
 
     .container
-      h1 Schedule
+        h1 #{pageTitle}
+
+        table.table.table-bordered
+            thead
+                tr
+                    th Type
+                    th Date/Time
+                    th Matchup
+                    th Dugout
+                    th Location
+                    th Status
+                    th Score
+            tbody
+                each obj in schedule
+                    tr
+                        td !{obj.game_type}
+                        td !{obj.human_datetime}
+                        if obj.home_away === "Away"
+                            td Mad Squabbles vs !{obj.opponent}
+                        else
+                            td !{obj.opponent} vs Mad Squabbles
+                        td !{obj.home_away}
+                        td !{obj.game_location} - Field !{obj.game_location_field}
+                        td !{obj.game_status}
+                        td !{obj.score} 
+                            if obj.outcome == "--"
+                            else
+                                !{obj.outcome}
 
 block scripts

@@ -38,3 +38,6 @@ jspm_packages
 
 # Environment files
 serviceAccountKey.json
+
+# phpStorm settings
+.idea

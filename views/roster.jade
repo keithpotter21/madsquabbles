@@ -5,9 +5,23 @@ block styles
 block content
 
     .container
-      h1 #{pageTitle}
+        h1 #{pageTitle}
 
-      each player in roster.players
-        p player.name
+        table.table.table-bordered
+            thead
+                tr
+                    th Name
+                    th Phone
+                    th Postition
+                    th Active
+            tbody
+                each obj in roster
+                    tr
+                        td !{obj.player_name}
+                        td !{obj.phone}
+                        td !{obj.position}
+                        td !{obj.active}
+
+
 
 block scripts

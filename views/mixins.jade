@@ -1,3 +1,8 @@
+//- first letter to uppercase
+mixin ucfirst(string)
+  - var string = string.charAt(0).toUpperCase() + string.slice(1)
+  #{string}
+
 //- Bootswatch mixin
 mixin bootswatch(theme)
   link(href="//maxcdn.bootstrapcdn.com/bootswatch/3.3.0/" + theme + "/bootstrap.min.css", rel="stylesheet")

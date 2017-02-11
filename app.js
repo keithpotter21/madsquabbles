@@ -11,6 +11,14 @@ var schedule = require('./routes/schedule');
 
 var app = express();
 
+var firebase = require("firebase-admin");
+var serviceAccount = require("./serviceAccountKey.json");
+
+firebase.initializeApp({
+  credential: firebase.credential.cert(serviceAccount),
+  databaseURL: "https://madsquabbles-ceb0a.firebaseio.com"
+});
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
