@@ -16,7 +16,6 @@ router.get('/', function(req, res, next) {
         } else {
           res.status(401).json({error: 'No games found'});
         }
-        db.delete();
       });
 });
 

@@ -6,7 +6,14 @@ block content
 
     .container
       .jumbotron
-        h1 Next Game
-        p This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.
+
+
+        each game, key in nextGame
+            h1 Next !{game.game_type} game
+            p !{game.human_datetime}
+                br
+                !{game.game_location} - Field !{game.game_location_field}
+                br
+                !{(game.home_away == "Away") ? "Mad Squabbles vs " + game.opponent : game.opponent + " vs Mad Squabbles"}
 
 block scripts
