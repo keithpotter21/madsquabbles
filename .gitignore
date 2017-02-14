@@ -41,3 +41,6 @@ serviceAccountKey.json
 
 # phpStorm settings
 .idea
+
+.DS_Store
+public/.DS_Store

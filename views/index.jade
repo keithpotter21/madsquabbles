@@ -5,15 +5,52 @@ block styles
 block content
 
     .container
-      .jumbotron
+        if ( nextGame.hasOwnProperty("error") )
+            row
+                p.alert.alert-danger #{nextGame.error}
+        else
+            each game, key in nextGame
+                .jumbotron
+                    div.row
+                        div.col-xs-12.col-sm-12.col-md-8
+                            h1 Next !{game.game_type} game
+                            p !{game.human_datetime}
+                                br
+                                !{game.game_location} - Field !{game.game_location_field}
+                                br
+                                !{(game.home_away == "Away") ? "Mad Squabbles vs " + game.opponent : game.opponent + " vs Mad Squabbles"}
+                        div.col-xs-12.col-sm-12.col-md-4
+                            div.weather-header Gametime Weather
+                            div.weather-conditions
+                                div.pull-left
+                                    case game.weather.icon
+                                        when "clear-day"
+                                            <i class="wi wi-day-clear"></i>
+                                        when "clear-night"
+                                            <i class="wi wi-night-clear"></i>
+                                        when "rain"
+                                            <i class="wi wi-rain"></i>
+                                        when "snow"
+                                            <i class="wi wi-snow"></i>
+                                        when "sleet"
+                                            <i class="wi wi-sleet"></i>
+                                        when "wind"
+                                            <i class="wi wi-wind"></i>
+                                        when "fog"
+                                            <i class="wi wi-fog"></i>
+                                        when "cloudy"
+                                            <i class="wi wi-cloud"></i>
+                                        when "partly-cloudy-day"
+                                            <i class="wi wi-cloudy"></i>
+                                        when "partly-cloudy-night"
+                                            <i class="wi wi-cloudy"></i>
+                                        default
+                                            <i class="wi wi-na"></i>
+                                    p #{game.weather.summary}
+                                div.pull-right #{Math.floor(game.weather.temperature)} &deg;
+                            div.clearfix
+                            div.weather-item Rain: #{game.weather.precipProbability} %
+                            div.weather-item Wind: #{Math.floor(game.weather.windSpeed)} mph
 
-
-        each game, key in nextGame
-            h1 Next !{game.game_type} game
-            p !{game.human_datetime}
-                br
-                !{game.game_location} - Field !{game.game_location_field}
-                br
-                !{(game.home_away == "Away") ? "Mad Squabbles vs " + game.opponent : game.opponent + " vs Mad Squabbles"}
 
 block scripts
