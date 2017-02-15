@@ -1,4 +1,25 @@
-.jumbotron h1 {
+/*--------------------------------
+
+	REMs
+
+*/
+/*--------------------------------
+
+	EMs calculator
+
+*/
+/*--------------------------------
+	Strip unit
+*/
+.navbar {
+  border-radius: 0;
+}
+
+.container .jumbotron {
+  border-radius: 0;
+}
+
+.container .jumbotron h1 {
   margin-top: 0;
 }
 
