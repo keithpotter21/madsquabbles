@@ -44,3 +44,6 @@ serviceAccountKey.json
 
 .DS_Store
 public/.DS_Store
+
+# environment variables
+env.js

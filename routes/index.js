@@ -4,9 +4,7 @@ var firebase = require("firebase-admin");
 
 var now = new Date();
 var startDate = Math.floor(now.getTime()/1000);
-console.log(startDate);
 var endDate = startDate + 7*86400;
-console.log(endDate);
 
 /* GET home page. */
 router.get('/', function(req, res, next) {

@@ -1,0 +1,55 @@
+.jumbotron h1 {
+  margin-top: 0;
+}
+
+.weather {
+  background-color: black;
+  color: white;
+  padding-bottom: 20px;
+}
+
+.weather .weather-header {
+  font-size: 36px;
+}
+
+.weather .weather-conditions {
+  font-size: 108px;
+  line-height: 108px;
+}
+
+.weather .weather-temperature .actual-temp {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-weight: 600;
+  color: white;
+}
+
+.weather .weather-temperature .actual-temp .temp {
+  font-size: 96px;
+  line-height: 96px;
+}
+
+.weather .weather-temperature .actual-temp .deg {
+  top: 10px;
+  line-height: normal;
+  font-size: 24px;
+  margin-right: 2px;
+}
+
+.weather .weather-temperature .actual-temp .temp-unit {
+  top: 11px;
+  line-height: normal;
+  margin-right: 0;
+  font-size: 24px;
+}
+
+.weather .weather-summary {
+  padding-top: 20px;
+  text-align: center;
+  font-size: 24px;
+  line-height: 24px;
+}

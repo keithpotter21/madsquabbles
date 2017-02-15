@@ -1,3 +1,63 @@
+//- wind direction
+mixin wind_direction(wind, bearing)
+  if wind > 0
+    if bearing > 1 && bearing <= 23
+      - dir = "NNE"
+    if bearing > 23 && bearing <= 46
+      - dir = "NE"
+    if bearing > 46 && bearing <= 68
+      - dir = "ENE"
+    if bearing > 68 && bearing <= 91
+      - dir = "E"
+    if bearing > 91 && bearing <= 113
+      - dir = "ESE"
+    if bearing > 113 && bearing <= 136
+      - dir = "SE"
+    if bearing > 136 && bearing <= 158
+      - dir = "SSE"
+    if bearing > 158 && bearing <= 181
+      - dir = "S"
+    if bearing > 181 && bearing <= 203
+      - dir = "SSW"
+    if bearing > 203 && bearing <= 226
+      - dir = "SW"
+    if bearing > 226 && bearing <= 248
+      - dir = "WSW"
+    if bearing > 248 && bearing <= 271
+      - dir = "W"
+    if bearing > 271 && bearing <= 293
+      - dir = "WNW"
+    if bearing > 293 && bearing <= 316
+      - dir = "NW"
+    if bearing > 316 && bearing <= 338
+      - dir = "NNW"
+    span Winds #{dir} at #{Math.floor(wind)} mph.
+
+//- weather icon
+mixin weathericon(condition)
+  case condition
+    when "clear-day"
+      <i class="wi wi-day-clear"></i>
+    when "clear-night"
+      <i class="wi wi-moon-alt-waning-crescent-5"></i>
+    when "rain"
+      <i class="wi wi-rain"></i>
+    when "snow"
+      <i class="wi wi-snow"></i>
+    when "sleet"
+      <i class="wi wi-sleet"></i>
+    when "wind"
+      <i class="wi wi-wind"></i>
+    when "fog"
+      <i class="wi wi-fog"></i>
+    when "cloudy"
+      <i class="wi wi-cloud"></i>
+    when "partly-cloudy-day"
+      <i class="wi wi-cloudy"></i>
+    when "partly-cloudy-night"
+      <i class="wi wi-cloudy"></i>
+    default
+      <i class="wi wi-na"></i>
 
 //- Bootswatch mixin
 mixin bootswatch(theme)
