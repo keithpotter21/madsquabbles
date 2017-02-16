@@ -1,0 +1,57 @@
+extends ./layouts/narrow.jade
+
+block content
+    h2.page-header Register
+
+    if errors
+        each error in errors
+            div.alert.alert-danger #{error.msg}
+
+    if firebase_errors
+        each err in firebase_errors
+            div.alert.alert-danger #{err.message}
+
+    form(
+        method="post"
+        action="/users/register"
+    )
+        fieldset
+            div.form-group
+                label(for="username") Username
+                input(
+                    type="text"
+                    class="form-control"
+                    placeholder=""
+                    name="username"
+                )
+            div.form-group
+                label(for="email") Email
+                input(
+                    type="email"
+                    class="form-control"
+                    placeholder=""
+                    name="email"
+                )
+            div.form-group
+                label(for="password") Password
+                input(
+                    type="password"
+                    class="form-control"
+                    placeholder=""
+                    name="password"
+                )
+            div.form-group
+                label(for="password2") Confirm Password
+                input(
+                    type="password"
+                    class="form-control"
+                    placeholder=""
+                    name="password2"
+                )
+
+            div.form-group
+                button(
+                    type="submit"
+                    class="btn btn-primary"
+                ) Submit
+

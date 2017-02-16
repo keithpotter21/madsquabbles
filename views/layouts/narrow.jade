@@ -1,0 +1,54 @@
+include ../mixins
+
+doctype html
+html(lang="en")
+    head
+
+        //- Basic Page Needs
+        //- ==================================================
+        meta(charset="utf-8")
+        meta(http-equiv="x-ua-compatible" content="ie=edge")
+        meta(http-equiv="Content-Type" content="text/html; charset=UTF-8")
+        meta(http-equiv="Cache-control" content="public")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        meta(name="description" content="")
+        meta(name="keywords" content="")
+        meta(name="author" content="")
+        //- The above meta tags *must* come first in the head; any other head content must come *after* these tags
+
+        title= title
+        //- link(rel="shortcut icon" href="/img/favicon-32x32.png")
+        //- link(rel="apple-touch-icon" href="/img/apple-icon-57x57.png")
+        //- link(rel="apple-touch-icon" sizes="72x72" href="/img/apple-icon-72x72.png")
+        //- link(rel="apple-touch-icon" sizes="114x114" href="/img/apple-icon-114x114.png")
+
+        //- CSS
+        //- ==================================================
+        link(rel="stylesheet" media="all" href="http://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,700,500")
+        link(rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css")
+
+        //- Bootswatch Theme
+        +bootswatch("flatly")
+
+        link(rel="stylesheet" media="all" href="/css/narrow.css")
+
+        link(rel="stylesheet" media="all" href="/css/style.css")
+
+        link(rel="stylesheet" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css")
+
+    body
+        div.container
+            div.header.clearfix
+                nav
+                    ul.nav.nav-pills.pull-right
+                        +nav_item( "/") Home
+                        +nav_item( "/users/register", (menu =='register') ? "active" : "") Register
+                        +nav_item( "/users/login", (menu == 'login') ? "active" : "" ) Login
+                h3.text-muted #{process.env.appName}
+
+            div.row.marketing
+                div.col-xs-12
+                    block content
+
+            footer.footer
+                p &copy; #{new Date().getFullYear()} BigHawkMedia.com

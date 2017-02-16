@@ -5,11 +5,15 @@ var path = require('path');
 var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
+var session = require('express-session');
 var bodyParser = require('body-parser');
+var expressValidator = require('express-validator');
+var flash = require('connect-flash');
 
 var index = require('./routes/index');
 var roster = require('./routes/roster');
 var schedule = require('./routes/schedule');
+var users = require('./routes/users');
 
 var app = express();
 
@@ -30,12 +34,22 @@ app.set('view engine', 'jade');
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use(expressValidator()); // this line must be immediately after any of the bodyParser middlewares!
+
 app.use(cookieParser());
+app.use(session({
+  secret: 'madsquabbles',
+  resave: false,
+  saveUninitialized: true,
+  cookie: { secure: true }
+}));
+app.use(flash());
 app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', index);
 app.use('/roster', roster);
 app.use('/schedule', schedule);
+app.use('/users', users);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
