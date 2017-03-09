@@ -13,7 +13,7 @@ block content
                 .jumbotron
                     div.row
                         div.col-xs-12.col-sm-12.col-md-8
-                            h1 Next !{game.game_type} game
+                            h1 !{(game.game_type == "bye week") ? "Next game: Cancelled" : "Next "+game.game_type+" game"}
                             p !{game.human_datetime}
                                 br
                                 !{game.game_location} - Field !{game.game_location_field}

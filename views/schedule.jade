@@ -10,7 +10,7 @@ block content
         table.table.table-bordered
             thead
                 tr
-                    th Type
+                    th Wk
                     th Date/Time
                     th Matchup
                     th Dugout
@@ -19,19 +19,32 @@ block content
                     th Score
             tbody
                 each obj in schedule
-                    tr
-                        td !{obj.game_type}
-                        td !{obj.human_datetime}
-                        if obj.home_away === "Away"
-                            td Mad Squabbles vs !{obj.opponent}
-                        else
-                            td !{obj.opponent} vs Mad Squabbles
-                        td !{obj.home_away}
-                        td !{obj.game_location} - Field !{obj.game_location_field}
-                        td !{obj.game_status}
-                        td !{obj.score}
-                            if obj.outcome == "--"
+                    if obj.game_status === "Cancelled"
+                        tr.active
+                            td.text-muted !{obj.game}
+                            td.text-muted !{obj.human_datetime}
+                            td.text-muted !{obj.game_cancelled_reason}
+                            td !{obj.home_away}
+                            td
+                            td.text-muted !{obj.game_status}
+                            td
+                    else
+                        tr
+                            td !{obj.game}
+                            td !{obj.human_datetime}
+                            if obj.home_away === "Away"
+                                td Mad Squabbles vs !{obj.opponent}
                             else
-                                !{obj.outcome}
+                                td !{obj.opponent} vs Mad Squabbles
+                            td !{obj.home_away}
+                            td !{obj.game_location} - Field !{obj.game_location_field}
+                            td !{obj.game_status}
+                            td
+                                if obj.outcome == "W"
+                                    span.text-success.text-bold !{obj.outcome} &nbsp;
+                                else if obj.outcome == "L"
+                                    span.text-danger.text-bold !{obj.outcome} &nbsp;
+                                else
 
+                                !{obj.score}
 block scripts
