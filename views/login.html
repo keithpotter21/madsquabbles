@@ -1,0 +1,49 @@
+<!DOCTYPE html>  
+<html lang="en">
+    <head>
+        <title>EasyAuth</title>
+        <meta charset="UTF-8">
+    </head>
+
+
+    <script src="https://www.gstatic.com/firebasejs/3.7.1/firebase.js"></script>
+    <script>
+        // Initialize Firebase
+        var config = {
+            apiKey: "AIzaSyBH2MuOFKREffNAQfY3ttkucvLUUyQiIpc",
+            authDomain: "madsquabbles-ceb0a.firebaseapp.com",
+            databaseURL: "https://madsquabbles-ceb0a.firebaseio.com",
+            storageBucket: "madsquabbles-ceb0a.appspot.com",
+            messagingSenderId: "269887809958"
+        };
+        firebase.initializeApp(config);
+    </script>
+
+    <!-- The code below initializes the sign-in widget from FirebaseUI web. -->
+    <script src="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.js"></script>
+    <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/1.0.0/firebaseui.css" />
+    <script type="text/javascript">
+        var uiConfig = {
+            signInSuccessUrl: '/roster',
+            signInOptions: [
+                // Specify providers you want to offer your users.
+                firebase.auth.EmailAuthProvider.PROVIDER_ID
+            ],
+            // Terms of service url can be specified and will show up in the widget.
+            tosUrl: 'madsquabbles.org'
+        };
+
+        // Initialize the FirebaseUI Widget using Firebase.
+        var ui = new firebaseui.auth.AuthUI(firebase.auth());
+
+        // The start method will wait until the DOM is loaded.
+        ui.start('#firebaseui-auth-container', uiConfig);
+    </script>
+
+    <!-- Include a simple background image & and title -->
+    <div></div>
+    <body>
+        <h1 align="center" style="color:white;">Firebase Auth Quickstart Demo</h1>
+        <div id="firebaseui-auth-container"></div>
+    </body>
+</html>

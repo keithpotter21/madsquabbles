@@ -75,3 +75,12 @@
   font-size: 24px;
   line-height: 24px;
 }
+
+#sign-in-status {
+  color: white;
+}
+
+.btn-auth {
+  margin-top: 8px;
+  margin-right: 15px;
+}

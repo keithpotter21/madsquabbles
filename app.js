@@ -25,6 +25,8 @@ firebase.initializeApp({
   databaseURL: "https://madsquabbles-ceb0a.firebaseio.com"
 });
 
+const auth = firebase.auth();
+
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');

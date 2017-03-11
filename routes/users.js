@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
+var path    = require("path");
 var firebase = require("firebase-admin");
+
 
 // Register
 router.get('/register', function(req, res){
@@ -9,8 +11,40 @@ router.get('/register', function(req, res){
 
 // Login
 router.get('/login', function(req, res){
-    res.render('login', {menu: 'login', "success_message": req.flash("success_message")});
+    console.log(path.join(__dirname+'../views/login.html'));
+    res.sendFile(path.join(__dirname+'/../views/login.html'));
 });
+
+// Login User
+router.post('/login.html', function(req, res){
+    var email = req.body.email;
+    var password = req.body.password;
+
+    // Validation
+    req.checkBody('email', 'Email is required').notEmpty();
+    req.checkBody('email', 'Email is not valid').isEmail();
+    req.checkBody('password', 'Password is required').notEmpty();
+
+    var errors = req.validationErrors();
+
+    if(errors){
+        console.log("Login validation errors:", errors);
+        res.render('login',{
+            errors: errors
+        });
+    } else {
+        firebase.auth().getUserByEmail(email)
+            .then(function(userRecord) {
+                // See the UserRecord reference doc for the contents of userRecord.
+                console.log("Successfully fetched user data:", userRecord.toJSON());
+            })
+            .catch(function(error) {
+                console.log("Error fetching user data:", error);
+            });
+        res.render('login.html');
+    }
+});
+
 
 // Register User
 router.post('/register', function(req, res){
